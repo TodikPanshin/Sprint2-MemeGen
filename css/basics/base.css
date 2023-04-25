@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+/* html {
+    font-family: playfair, serif;
+    color: var(--clr1);
+    line-height: 1.7142857;
+} */
+
+body {
+    margin: 0;
+    /* font-size: 0.875rem; */
+}
+
+
+
+.canvas-container{
+    border: 1px solid;
+    height: 450px;
+    width: 450px;
+    margin: auto;
+}
