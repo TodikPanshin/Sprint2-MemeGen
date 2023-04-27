@@ -1,0 +1,24 @@
+.main-header  {
+    
+    background-color:var(--clr1) ;
+}
+.main-header-container{
+    height: 100px;
+    width: auto;
+}
+.main-header-container .logo{
+    margin-inline-start:var(--layout-padding);
+}
+.main-nav a{
+    display: flex;
+    align-items: center;
+	justify-content: center;
+    font-size: 1.1875rem;
+    width: 132px;
+    text-decoration: none;
+    color: var(--clr0);
+}
+
+.main-nav .head-link:first-child{
+    border-inline-end:1px solid var(--clr2);
+}

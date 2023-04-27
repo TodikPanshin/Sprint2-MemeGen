@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,24 +8,50 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Meme-gen</title>
 </head>
-<body onload="onInit()">
-    <header><h1>dooooom</h1></header>
+
+<body class="main-layout" onload="onInit()">
+
+    <header class="main-header">
+        <div class="main-header-container flex space-between align-center">
+        <div class="logo">
+            <h1>memegen</h1>
+        </div>
+        <nav class="main-nav-container">
+            <ul class="main-nav flex clean-list">
+                <li class="head-link"><a href="#">gallery</a></li>
+                <li class="head-link"><a href="#">about</a></li>
+            </ul>
+        </nav>
+    </div>
+    </header>
+
     <main>
         <section class="main-gallery"></section>
-        <section class="main-editor" hidden>
+
+        <section class="main-editor-layout  hidden ">
+            <div class="editor-grid-container">
             <div class="canvas-container">
                 <canvas class="meme-canvas" width="400" height="400"></canvas>
             </div>
-            <div class="control-box">
-                <form id="user-text"  onsubmit="onSetLineTxt(event)">
-                <input type="text" class="user-text" name="user-text" placeholder="add meme text" >
-            </form>
-                <button>add</button>
+            <div class="control-box flex align-center">
+                <form id="user-text" oninput="onSetLineTxt(event)" onsubmit="onHandleSwitch(event)">
+                    <input type="text" class="user-text" name="user-text" placeholder="add meme text">
+                </form>
+                <button onclick="onSetLineSwitch()">switch</button>
+                <input type="color" class="line-color" value="#000000" oninput="onSetLineColor(event)">
+                <form class="line-size" onclick="onSetLineSize(event)">
+                    <button class="line-size-up" value="line-size-up">+</button>
+                    <button class="line-size-down" value="line-size-down">-</button>
+                </form>
             </div>
+        </div>
         </section>
     </main>
-    <footer><h2>everything's fine</h2>
-    <small>coffee-right 2023</small></footer>
+
+    <footer class="main-footer flex align-center">
+        <h2>everything's fine</h2>
+        <small>coffee-right 2023</small>
+    </footer>
 
 
 
@@ -36,4 +63,5 @@
     <script src="js/gallery.controller.js"></script>
     <!-- <script src="js/services/main.controller.js"></script> -->
 </body>
+
 </html>

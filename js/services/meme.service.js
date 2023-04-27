@@ -1,11 +1,9 @@
 'use strict'
 const STORAGE_KEY='memeDB'
-var gKeywordSearchCountMap = {'funny': 12,'cat': 16, 'baby': 2}
 
-var gImgs = [{id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat']}];
 
 var gMeme = {
- selectedImgId: 1,
+ selectedImgId: 2,
  selectedLineIdx: 0,
  lines: [
  {
@@ -13,24 +11,59 @@ var gMeme = {
  size: 40,
  align: 'center',
  color: 'white'
- }
- ]
+ },
+ {
+ txt: 'you think this is air your breathing  now',
+ size: 40,
+ align: 'center',
+ color: 'white'
+ },
+ {
+ txt: 'test',
+ size: 40,
+ align: 'center',
+ color: 'white'
+ },
+]
 }
 
 function getMeme(){
    return {
-    img:getImg(gMeme.selectedImgId),
-    line:gMeme.lines[gMeme.selectedLineIdx] ,
+    img:getImgById(gMeme.selectedImgId),
+    lines:gMeme.lines,
 } 
 }
 
-function getImg(imgIdx) {
+function getImgById(imgIdx) {
     return gImgs.find(img => imgIdx === img.id)
+}
+
+function setImg(imgId){
+    gMeme.selectedImgId=imgId
 }
 
 function setLineTxt(value){
 gMeme.lines[gMeme.selectedLineIdx].txt=value
 }
+
+function setLineColor(value){
+    gMeme.lines[gMeme.selectedLineIdx].color=value
+}
+
+function setLineSize(value){
+    if(value==='line-size-up') gMeme.lines[gMeme.selectedLineIdx].size+=5
+    else gMeme.lines[gMeme.selectedLineIdx].size-=5
+}
+
+function setLineSwitch(){
+    if(gMeme.selectedLineIdx===gMeme.lines.length-1)return gMeme.selectedLineIdx=0
+    gMeme.selectedLineIdx++
+}
+
+function getCurrLineIdx(){
+    return gMeme.selectedLineIdx
+}
+
 
 function _createlines() {
         const lines = [
@@ -59,4 +92,4 @@ function _createMeme( ) {
 
 function _saveMemesToStorage() {
     saveToStorage(STORAGE_KEY, gMeme)
-}    
+} 

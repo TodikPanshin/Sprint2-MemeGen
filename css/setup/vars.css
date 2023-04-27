@@ -1,0 +1,25 @@
+/* Palette */
+
+:root{
+    --clr0: #ffffff;
+    --clr1: #ff7f00;
+    --clr2: #040a2c;;
+
+
+/* Layout */
+--layout-padding: 1.25rem;
+--site-hight:10fr;
+    --l: 1060px;
+    --m: 860px;
+    --s: 600px;
+    
+    /* canvas */
+    --canvas-container-height:450px;
+    --canvas-container-width:450px;
+
+
+
+
+
+
+}

@@ -1,0 +1,10 @@
+
+.editor-grid-container{
+    display: grid;
+    grid-template-columns: var( --canvas-container-width) 1fr;
+    gap: 30px 40px;
+ }
+
+.control-box{
+    flex-direction: column;
+}

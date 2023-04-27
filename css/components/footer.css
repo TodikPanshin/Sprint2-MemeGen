@@ -1,0 +1,9 @@
+.main-footer{
+    flex-direction: column;
+    background-color:var(--clr1) ;
+    color: var(--clr0);
+}
+small{
+    font-size: medium; ;
+    letter-spacing: .1em;
+}

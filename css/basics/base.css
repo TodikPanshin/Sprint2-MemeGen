@@ -2,22 +2,33 @@
     box-sizing: border-box;
 }
 
-/* html {
-    font-family: playfair, serif;
-    color: var(--clr1);
-    line-height: 1.7142857;
-} */
+html {
+    font-family:impact;
+   
+}
 
 body {
     margin: 0;
-    /* font-size: 0.875rem; */
 }
 
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+    margin: 0 0 0.05em;
+}
 
 .canvas-container{
     border: 1px solid;
-    height: 450px;
-    width: 450px;
+    height: var(--canvas-container-height);
+    width:var(--canvas-container-width);
     margin: auto;
 }
+
+img {
+    width: 100%;
+}
+
