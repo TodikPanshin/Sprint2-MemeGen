@@ -3,3 +3,45 @@
     font-family: Impact;
     src: url(/fonts/impact.ttf);
 }
+
+/* fontawesome */
+@font-face {
+	font-family: fa;
+	src: url("../../fonts/fa-brands-400.ttf");
+}
+
+.fa::before {
+	font-family: fa;
+	font-weight: normal;
+}
+
+.fa.plus::before {
+	content: "\2b";
+}
+.fa.align-left::before {
+	content: "\f036";
+}
+.fa.align-right::before {
+	content: "\f038";
+}
+.fa.a::before {
+	content: "\41";
+}
+.fa.minus::before {
+	content: "\f068";
+}
+.fa.plus::before {
+	content: "\2b";
+}
+.fa.facebook-f::before {
+	content: "\f39e";
+}
+.fa.magnifying-glass::before {
+	content: "\f002";
+}
+.fa.trash-can::before {
+	content: "\f2ed";
+}
+.fa.arrow-up-arrow-down::before {
+	content: "\e099";
+}

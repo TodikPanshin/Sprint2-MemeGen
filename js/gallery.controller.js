@@ -35,7 +35,7 @@ function renderGallery(){
 }
 
 function onImgSelect(imgId){
-    console.log(imgId)
+    // console.log(imgId)
     document.querySelector('.main-gallery').classList.add('hidden')
     document.querySelector('.main-editor-layout').classList.remove('hidden')
     setImg(imgId)

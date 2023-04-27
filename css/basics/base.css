@@ -26,8 +26,8 @@ h6 {
     height: var(--canvas-container-height);
     width:var(--canvas-container-width);
     margin: auto;
+    cursor:crosshair;
 }
-
 img {
     width: 100%;
 }

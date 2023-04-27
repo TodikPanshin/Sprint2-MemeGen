@@ -10,19 +10,22 @@ var gMeme = {
  txt: 'I sometimes eat Falafel',
  size: 40,
  align: 'center',
- color: 'white'
+ fillStyle: 'white',
+ strokeStyle:'black',
  },
  {
  txt: 'you think this is air your breathing  now',
  size: 40,
  align: 'center',
- color: 'white'
+ fillStyle: 'white',
+ strokeStyle:'black',
  },
  {
  txt: 'test',
  size: 40,
  align: 'center',
- color: 'white'
+ fillStyle: 'white',
+ strokeStyle:'black',
  },
 ]
 }
@@ -46,8 +49,11 @@ function setLineTxt(value){
 gMeme.lines[gMeme.selectedLineIdx].txt=value
 }
 
-function setLineColor(value){
-    gMeme.lines[gMeme.selectedLineIdx].color=value
+function setLineColor(colorEv){
+    if(colorEv.name==='lineFillStyle'){
+    gMeme.lines[gMeme.selectedLineIdx].fillStyle=colorEv.value
+    }
+    else gMeme.lines[gMeme.selectedLineIdx].strokeStyle=colorEv.value
 }
 
 function setLineSize(value){
@@ -64,6 +70,16 @@ function getCurrLineIdx(){
     return gMeme.selectedLineIdx
 }
 
+function handlLine(value){
+    if(value==='add'){
+        gMeme.lines.push(_createline( ))}
+        else if(value==='delete'){
+            gMeme.lines.splice(gMeme.selectedLineIdx, 1)}
+    }
+
+function setLinePos(pos){
+    gMeme.lines[gMeme.selectedLineIdx].pos=pos
+}
 
 function _createlines() {
         const lines = [
@@ -73,12 +89,14 @@ function _createlines() {
         ]
 }
 
-function _createline( ) {
+function _createline() {
     return {
-        txt,
-        size,
-        align,
-        color,
+        txt:'add meme text',
+        size:40,
+        align:'center',
+        color:'white',
+        strokeStyle:'black',
+        pos,
     }
 }
 
