@@ -12,7 +12,7 @@
 
 .fa::before {
 	font-family: fa;
-	font-weight: normal;
+	font-weight: 400;
 }
 
 .fa.plus::before {
@@ -23,6 +23,9 @@
 }
 .fa.align-right::before {
 	content: "\f038";
+}
+.fa.align-center::before {
+	content: "\f037";
 }
 .fa.a::before {
 	content: "\41";
@@ -40,7 +43,7 @@
 	content: "\f002";
 }
 .fa.trash-can::before {
-	content: "\f2ed";
+	content: "\f167";
 }
 .fa.arrow-up-arrow-down::before {
 	content: "\f095";

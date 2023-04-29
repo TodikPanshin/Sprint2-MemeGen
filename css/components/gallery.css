@@ -16,8 +16,10 @@ margin: 0 auto;
 
 .gallery-tool-box{
     background-color: var(--clr0);
+    flex-direction: column;
 }
 
 .gallery-tool-box .keyword-container{
-    cursor:pointer
+    cursor:pointer;
+    flex-direction: column;
 }

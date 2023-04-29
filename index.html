@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href=
-"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
-</link>
+    <script src="https://kit.fontawesome.com/9d6d104c7a.js" crossorigin="anonymous"></script>
     <title>Meme-gen</title>
 </head>
 
@@ -80,13 +78,13 @@
                     </form>
 
                     <form class="line-size" onclick="onSetLineAlignment(event)">
-                        <button class="set-line-left" value="left"><i class="fa-solid fa-align-left"></i></button>
-                        <button class="set-line-center" value="center"><i class="fa-solid fa-align-center"></i></button>
-                        <button class="set-line-right" value="right"><i class="fa-solid fa-align-right"></i></button>
+                        <button class="set-line-right" value="right">left</button>
+                        <button class="set-line-center fa align-center" value="center">center</button>
+                        <button class="set-line-left" value="left">right</button>
                     </form>
                     <div class="save-meme " >
                         <ul class="clean-list">
-                            <li><i class="fa-solid fa-download"><a href="#" onclick="downloadCanvas(this)" download="file-name"></a></i></li>
+                            <li><a href="#" onclick="downloadCanvas(this)" download="file-name" >download</a></li>
                             <li><button class="btn" onclick="onUploadImg()">
                                     Upload Image from Canvas
                                 </button></li>

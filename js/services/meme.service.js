@@ -48,7 +48,7 @@ function setRandomMeme() {
         line.size = getRandomInt(30, 60)
         line.fillStyle = getRandomColor()
         line.strokeStyle = getRandomColor()
-    });
+    })
 
 }
 

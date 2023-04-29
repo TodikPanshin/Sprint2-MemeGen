@@ -10,7 +10,7 @@ const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 function onInit() {
     gElCanvas = document.querySelector('.meme-canvas')
     gCtx = gElCanvas.getContext('2d')
-    //  resizeCanvas()
+     resizeCanvas()
     // renderMeme()
     renderGallery()
     renderKeyWordCunt()
@@ -202,6 +202,7 @@ function addListeners() {
     addMouseListeners()
     addTouchListeners()
     // addTextListeners()
+    
 }
 
 function addTextListeners() {

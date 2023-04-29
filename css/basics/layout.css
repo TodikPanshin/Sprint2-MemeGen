@@ -14,13 +14,14 @@
 
 .main-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(auto, 200px));
     grid-auto-flow: dense;
 }
 
 .main-editor-layout {
     grid-row: 2;
     padding: 60px;
+
 }
 
 .main-footer {

@@ -49,9 +49,9 @@ function setKeywordSize(keyword) {
     const startingFontSize = window.getComputedStyle(document.body, null)
         .getPropertyValue('font-size')
         .slice(0, 2) * 1
-    const add = 3
+    const add = 0.4
     const keywordSize = getKeywordValue(keyword)
-    document.querySelector(`.${keyword}`).style.fontSize += startingFontSize+(keywordSize * add) + "px"
+    document.querySelector(`.${keyword}`).style.fontSize += (keywordSize * add) + "em"
 }
 
 function onHandelKeyword(keyword) {
