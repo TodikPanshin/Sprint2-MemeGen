@@ -16,7 +16,7 @@
 }
 
 .fa.plus::before {
-	content: "\2b";
+	content: "\f015";
 }
 .fa.align-left::before {
 	content: "\f036";
@@ -30,8 +30,8 @@
 .fa.minus::before {
 	content: "\f068";
 }
-.fa.plus::before {
-	content: "\2b";
+.fa.download::before {
+	content: "\f019";
 }
 .fa.facebook-f::before {
 	content: "\f39e";
@@ -43,5 +43,5 @@
 	content: "\f2ed";
 }
 .fa.arrow-up-arrow-down::before {
-	content: "\e099";
+	content: "\f095";
 }

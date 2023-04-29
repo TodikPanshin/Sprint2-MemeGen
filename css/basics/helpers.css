@@ -13,6 +13,10 @@
 .flex.space-between {
     justify-content: space-between;
 }
+.flex.start {
+    justify-content: start;
+}
+
 
 .flex.align-center {
     align-items: center;

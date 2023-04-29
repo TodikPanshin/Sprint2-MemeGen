@@ -4,3 +4,20 @@ gap: 10px;
 padding: 60px;
 margin: 0 auto;
 }
+
+
+.keyword-container .keyword{
+    display: flex;
+    align-items: center;
+	justify-content: center;
+    width:fit-content;
+    margin-inline: 5px;
+}
+
+.gallery-tool-box{
+    background-color: var(--clr0);
+}
+
+.gallery-tool-box .keyword-container{
+    cursor:pointer
+}

@@ -19,6 +19,6 @@
     color: var(--clr0);
 }
 
-.main-nav .head-link:first-child{
+.main-nav .head-link:not(:last-child){
     border-inline-end:1px solid var(--clr2);
 }

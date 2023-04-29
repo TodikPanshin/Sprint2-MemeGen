@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+</link>
     <title>Meme-gen</title>
 </head>
 
@@ -13,53 +16,102 @@
 
     <header class="main-header">
         <div class="main-header-container flex space-between align-center">
-            <div class="logo">
+            <div class="logo" onclick="onReset()">
                 <h1>memegen</h1>
             </div>
             <nav class="main-nav-container">
                 <ul class="main-nav flex clean-list">
-                    <li class="head-link"><a href="#">gallery</a></li>
-                    <li class="head-link"><a href="#">about</a></li>
+                    <li class="head-link" onclick="onOpenGallery()" ><a href="#main-gallery-layout">gallery</a></li>
+                    <li class="head-link" onclick="onOpenMemes()"><a href="#main-saved-memes-layout">memes</a></li>
+                    <li class="head-link" onclick="onOpenAbout()"><a href="#main-about-layout">about</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <section class="main-gallery"></section>
+        <section class="main-gallery-layout ">
+
+            <div class="gallery-tool-box flex align-center start">
+                <button class="flexible" onclick="onGetRandomMeme()">im flexible</button>
+
+                <!-- <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" /> -->
+               
+                <form class="filter-by-keyword" onsubmit="onSetFilterByKeyword(event)" >
+                    <input list="keywords" name="keywords-input" class="keywords-input" placeholder="select keyword filter">
+                    <datalist id="keywords">
+                    </datalist>
+                    <button class="rst-filter" onclick="setFilterByKeyword('')" value="">reset filter</button>
+                  </form>
+                  
+                <div class="keyword-container flex space-between align-center"></div>
+            </div>
+            <section class="main-gallery"></section>
+        </section>
 
         <section class="main-editor-layout  hidden ">
             <div class="editor-grid-container">
                 <div class="canvas-container">
-                    <canvas class="meme-canvas" width="400" height="400"></canvas>
+                    <canvas class="meme-canvas" width="400" height="400">
+                        <!-- <h1 class="test1">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h1> -->
+                    </canvas>
                 </div>
 
                 <div class="control-box flex align-center">
-                    <form id="user-text" oninput="onSetLineTxt(event)" onsubmit="onHandleSwitch(event)">
+                    <form id="user-text" oninput="onSetLineTxt(event)" onsubmit="onSelectCurrLine(event)">
                         <input type="text" class="user-text" name="user-text" placeholder="add meme text">
                     </form>
 
-                    <button onclick="onSetLineSwitch()">switch</button>
+                    <button class="fa arrow-up-arrow-down" onclick="onSetLineSwitch()">switch</button>
+
                     <form class="line-handl" onclick="onHandlLine(event)">
-                        <button value="add">add line</button>
-                        <button value="delete">delete line</button>
+                        <button class=" fa plus" value="add"></button>
+                        <button class="fa trash-can" value="delete"></button>
                     </form>
 
                     <form class="color-handl" oninput="onSetLineColor(event)">
                         <input type="color" class="line-fill-style" name="lineFillStyle" value="#FFFFFF">
                         <input type="color" class="line-stroke-style" name="lineStrokeStyle" value="#000000">
                     </form>
-                    
+
                     <form class="line-size" onclick="onSetLineSize(event)">
                         <button class="line-size-up" value="line-size-up">+</button>
                         <button class="line-size-down" value="line-size-down">-</button>
                     </form>
+
+                    <form class="line-size" onclick="onSetLineAlignment(event)">
+                        <button class="set-line-left" value="left"><i class="fa-solid fa-align-left"></i></button>
+                        <button class="set-line-center" value="center"><i class="fa-solid fa-align-center"></i></button>
+                        <button class="set-line-right" value="right"><i class="fa-solid fa-align-right"></i></button>
+                    </form>
+                    <div class="save-meme " >
+                        <ul class="clean-list">
+                            <li><i class="fa-solid fa-download"><a href="#" onclick="downloadCanvas(this)" download="file-name"></a></i></li>
+                            <li><button class="btn" onclick="onUploadImg()">
+                                    Upload Image from Canvas
+                                </button></li>
+                                <li><button class="save-curr-meme" onclick="onSaveCurrMeme()">save</button></li>
+                        </ul>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="main-saved-memes-layout hidden">
+            <div class="saved-memes-container">
+                <h2>no memes saved</h2>
+            </div>
+
+        </section>
+
+        <section class="main-about-layout hidden">
+            <div class="about-text">
+                
             </div>
         </section>
     </main>
 
-    <footer class="main-footer flex align-center">
+    <footer class="main-footer flex align-center ">
         <h2>everything's fine</h2>
         <small>coffee-right 2023</small>
     </footer>
@@ -69,9 +121,13 @@
 
     <script src="js/services/util.service.js"></script>
     <script src="js/services/storage.service.js"></script>
+    <script src="js/services/sharing-on-facebook.service.js"></script>
     <script src="js/services/meme.service.js"></script>
+    <script src="js/services/gallery.service.js"></script>
     <script src="js/meme.controller.js"></script>
     <script src="js/gallery.controller.js"></script>
+    <script src="js/save-meme.controller.js"></script>
+    <script src="js/about.controller.js"></script>
     <!-- <script src="js/services/main.controller.js"></script> -->
 </body>
 

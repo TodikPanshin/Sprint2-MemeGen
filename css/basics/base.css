@@ -9,6 +9,7 @@ html {
 
 body {
     margin: 0;
+    background-color: var(--clr3);
 }
 
 h1,
@@ -21,8 +22,18 @@ h6 {
     margin: 0 0 0.05em;
 }
 
+button{
+    border-radius: 1em;
+    background-color: var(--clr0);
+    border: none;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    cursor:pointer;
+    text-transform: uppercase;
+}
+
 .canvas-container{
-    border: 1px solid;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 0.5rem;
     height: var(--canvas-container-height);
     width:var(--canvas-container-width);
     margin: auto;
@@ -30,5 +41,10 @@ h6 {
 }
 img {
     width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor:pointer
 }
 
+.meme-canvas{
+border-radius: 0.5rem
+}
