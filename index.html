@@ -60,11 +60,11 @@
                         <input type="text" class="user-text" name="user-text" placeholder="add meme text">
                     </form>
 
-                    <button class="fa arrow-up-arrow-down" onclick="onSetLineSwitch()">switch</button>
+                    <button  onclick="onSetLineSwitch()">switch</button>
 
                     <form class="line-handl" onclick="onHandlLine(event)">
-                        <button class=" fa plus" value="add"></button>
-                        <button class="fa trash-can" value="delete"></button>
+                        <button  value="add">add</button>
+                        <button  value="delete">delete</button>
                     </form>
 
                     <form class="color-handl" oninput="onSetLineColor(event)">
@@ -79,12 +79,12 @@
 
                     <form class="line-size" onclick="onSetLineAlignment(event)">
                         <button class="set-line-right" value="right">left</button>
-                        <button class="set-line-center fa align-center" value="center">center</button>
+                        <button class="set-line-center" value="center">center</button>
                         <button class="set-line-left" value="left">right</button>
                     </form>
                     <div class="save-meme " >
                         <ul class="clean-list">
-                            <li><a href="#" onclick="downloadCanvas(this)" download="file-name" >download</a></li>
+                            <li><a href="#" onclick="downloadCanvas(this)" download="file-name" class=".clean-list" >download</a></li>
                             <li><button class="btn" onclick="onUploadImg()">
                                     Upload Image from Canvas
                                 </button></li>
