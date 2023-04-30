@@ -23,15 +23,35 @@ h6 {
     margin: 0 0 0.05em;
 }
 
+/* .icon{
+    width: 4em;
+    height: 4em;
+    border: 0;
+    box-shadow:none;
+    background: transparent;
+    text-decoration: none;
+    transition: 2s;
+} */
+
+/* .icon:hover{
+    background-color: rgb(204, 201, 201);
+} */
+
 button{
+    width: auto;
+    height: 4em;
     border-radius: 1em;
     background-color: var(--clr0);
     border: none;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     cursor:pointer;
     text-transform: uppercase;
+    transition: 1s;
 }
 
+button:hover{
+    background-color: var(--clr4);
+}
 .canvas-container{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 0.5rem;
@@ -43,7 +63,14 @@ button{
 img {
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    cursor:pointer
+    cursor:pointer;
+    border-radius: 1em;
+    transition: 1.5s;
+    
+}
+
+img:hover{
+    opacity: 70%;
 }
 
 .meme-canvas{

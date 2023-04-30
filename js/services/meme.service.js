@@ -2,39 +2,6 @@
 const MEMES_KEY = 'memesDB'
 
 
-// var gMeme = {
-//     selectedImgId: 2,
-//     selectedLineIdx: 0,
-//     lines: [
-//         {
-//             txt: 'I sometimes eat Falafel',
-//             size: 40,
-//             width: 0,
-//             pos: {},
-//             align: 'center',
-//             fillStyle: '#FFFFFF',
-//             strokeStyle: '#000000',
-//         },
-//         {
-//             txt: 'you think this is air your breathing  now',
-//             size: 40,
-//             width: 0,
-//             pos: {},
-//             align: 'center',
-//             fillStyle: '#FFFFFF',
-//             strokeStyle: '#000000',
-//         },
-//         {
-//             txt: 'test',
-//             size: 40,
-//             width: 0,
-//             pos: {},
-//             align: 'center',
-//             fillStyle: '#FFFFFF',
-//             strokeStyle: '#000000',
-//         },
-//     ]
-// }
 
 var randomLines = ['I sometimes eat Falafel', 'you think this is air your breathing  now', 'this is funny', 'i know css', 'test',]
 
@@ -60,6 +27,7 @@ function getMeme() {
 }
 
 function getImgById(imgIdx) {
+    if(imgIdx==='user')return
     return gImgs.find(img => imgIdx === img.id)
 }
 
@@ -144,7 +112,8 @@ function moveLinePos(pos) {
     // console.log(gMeme.lines[gMeme.selectedLineIdx].pos)
 }
 
-function saveCurrMeme() {
+function saveCurrMeme(currmeme) {
+    gMeme.imgUrl = currmeme
     gMemes = loadFromStorage(MEMES_KEY)
     if (!gMemes || !gMemes.length) {
         gMemes = []
@@ -156,7 +125,7 @@ function saveCurrMeme() {
 
 }
 
-function _createlines(num = 3) {
+function _createlines(num = 1) {
     const lines = []
     for (let i = 0; i < num; i++) {
         lines.push(_createline())

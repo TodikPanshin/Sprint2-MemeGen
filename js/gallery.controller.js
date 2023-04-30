@@ -6,10 +6,11 @@ function renderGallery() {
     const imgs = getImgs()
     const strHtmls = imgs.map(img =>
         `
-    <img src=${img.url} alt='${img.keywords}' onclick="onImgSelect(${img.id})"  class="img-${img.id}"/>
+    <img src="${img.url}" alt='${img.keywords}' onclick="onImgSelect(${img.id})"  class="img-${img.id}"/>
     `
     )
     document.querySelector('.main-gallery').innerHTML = strHtmls.join('')
+
 }
 
 function onImgSelect(imgId) {
@@ -55,14 +56,11 @@ function setKeywordSize(keyword) {
 }
 
 function onHandelKeyword(keyword) {
+    console.log(keyword)
     setKeyWordMapValue(keyword)
     setFilterByKeyword(keyword)
     renderKeyWordCunt()
     renderGallery()
-}
-
-function onImgInput(ev) {
-    loadImageFromInput(ev,renderMeme )
 }
 
 function onSetFilterByKeyword(ev){
@@ -70,6 +68,20 @@ function onSetFilterByKeyword(ev){
     const keyword=document.querySelector('.keywords-input')
     if(keyword.value)setFilterByKeyword(keyword.value)
     keyword.value=''
+    setKeyWordMapValue(keyword.value)
     renderGallery()
+}
+
+function onImgInput(ev) {
+    
+    loadImageFromInput(ev, onSetUplodedimgs)
+    
+}
+
+function  onSetUplodedimgs(img){
+    setUplodedimgs(img)
+    renderGallery()
+    renderKeyWordCunt()
+    renderKeywordFilter()
 }
 

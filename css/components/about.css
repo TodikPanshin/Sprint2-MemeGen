@@ -1,0 +1,15 @@
+
+
+.about-text{
+    text-align: center;
+    margin-inline: 150px;
+    line-height: 1.5em;
+    font-size: 1em;
+}
+    
+.about-text img{
+    
+    width: auto;
+    height: 30em;
+    border-radius: 5rem;
+}

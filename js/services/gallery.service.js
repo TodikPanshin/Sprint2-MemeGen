@@ -1,31 +1,13 @@
 'use strict'
+const IMGS_KEY = 'imgsDB'
 
-var gImgs = [
-    { id: 1, url: 'img/1.jpg', keywords: ['evil', 'politics'] },
-    { id: 2, url: 'img/2.jpg', keywords: ['cute', 'dog'] },
-    { id: 3, url: 'img/3.jpg', keywords: ['cute', 'dog', 'kid'] },
-    { id: 4, url: 'img/4.jpg', keywords: ['funny', 'cat'] },
-    { id: 5, url: 'img/5.jpg', keywords: ['funny', 'kid'] },
-    { id: 6, url: 'img/6.jpg', keywords: ['funny', 'alien'] },
-    { id: 7, url: 'img/7.jpg', keywords: ['funny', 'kid'] },
-    { id: 8, url: 'img/8.jpg', keywords: ['funny', 'man'] },
-    { id: 9, url: 'img/9.jpg', keywords: ['funny', 'kid'] },
-    { id: 10, url: 'img/10.jpg', keywords: ['funny', 'politics'] },
-    { id: 11, url: 'img/11.jpg', keywords: ['angry', 'man'] },
-    { id: 12, url: 'img/12.jpg', keywords: ['man'] },
-    { id: 13, url: 'img/13.jpg', keywords: ['happy', 'man', 'movie'] },
-    { id: 14, url: 'img/14.jpg', keywords: ['movie', 'man'] },
-    { id: 15, url: 'img/15.jpg', keywords: ['movie', 'man'] },
-    { id: 16, url: 'img/16.jpg', keywords: ['funny', 'man', 'movie'] },
-    { id: 17, url: 'img/17.jpg', keywords: ['evil', 'politics'] },
-    { id: 18, url: 'img/18.jpg', keywords: ['animation', 'movie'] },
-]
-
+var gImgs 
 var gKeywordSearchCountMap
 var gFilterKeyword
 
-_createKeywordSearchCountMap()
 
+_creategImgs()
+_createKeywordSearchCountMap()
 
 function getImgs() {
 
@@ -38,13 +20,12 @@ function getImgs() {
 }
 
 function getKeyword() {
-    const test = Object.keys(gKeywordSearchCountMap)
-    return test
+    const keywords = Object.keys(gKeywordSearchCountMap)
+    return keywords
 }
 
 function setKeyWordMapValue(keyword) {
     gKeywordSearchCountMap[keyword]++
-    console.log(gKeywordSearchCountMap)
 }
 
 function getKeywordValue(keyword) {
@@ -57,18 +38,21 @@ function setFilterByKeyword(value) {
 
 function loadImageFromInput(ev, onImageReady) {
     const reader = new FileReader()
-    console.log(reader)
 
     reader.onload = function (event) {
         let img = new Image()
         img.src = event.target.result
-        console.log(img.src)
         img.onload = onImageReady.bind(null, img)
-        // Can also do it this way:
-        // img.onload = () => onImageReady(img)
     }
-    reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
+    reader.readAsDataURL(ev.target.files[0])
+}
 
+function setUplodedimgs(img) {
+    let upImg = _createImg(img)
+    gImgs.push(upImg)
+    _saveImgsToStorage()
+    _createKeywordSearchCountMap()
+    
 }
 
 function _createKeywordSearchCountMap() {
@@ -84,19 +68,49 @@ function _createKeywordSearchCountMap() {
     gKeywordSearchCountMap = KeywordCountMap
 }
 
-function _addImg(img) {
-    console.log('hi')
-
+function _getNextId() {
+   let id= gImgs[gImgs.length-1].id
+   return id+1
 }
 
 
+function _creategImgs() {
+    gImgs = loadFromStorage(IMGS_KEY)
+    if (!gImgs || !gImgs.length) {
+        gImgs = [
+            { id: 1, url: 'img/1.jpg', keywords: ['evil', 'politics'] },
+            { id: 2, url: 'img/2.jpg', keywords: ['cute', 'dog'] },
+            { id: 3, url: 'img/3.jpg', keywords: ['cute', 'dog', 'kid'] },
+            { id: 4, url: 'img/4.jpg', keywords: ['funny', 'cat'] },
+            { id: 5, url: 'img/5.jpg', keywords: ['funny', 'kid'] },
+            { id: 6, url: 'img/6.jpg', keywords: ['funny', 'alien'] },
+            { id: 7, url: 'img/7.jpg', keywords: ['funny', 'kid'] },
+            { id: 8, url: 'img/8.jpg', keywords: ['funny', 'man'] },
+            { id: 9, url: 'img/9.jpg', keywords: ['funny', 'kid'] },
+            { id: 10, url: 'img/10.jpg', keywords: ['funny', 'politics'] },
+            { id: 11, url: 'img/11.jpg', keywords: ['angry', 'man'] },
+            { id: 12, url: 'img/12.jpg', keywords: ['man'] },
+            { id: 13, url: 'img/13.jpg', keywords: ['happy', 'man', 'movie'] },
+            { id: 14, url: 'img/14.jpg', keywords: ['movie', 'man'] },
+            { id: 15, url: 'img/15.jpg', keywords: ['movie', 'man'] },
+            { id: 16, url: 'img/16.jpg', keywords: ['funny', 'man', 'movie'] },
+            { id: 17, url: 'img/17.jpg', keywords: ['evil', 'politics'] },
+            { id: 18, url: 'img/18.jpg', keywords: ['animation', 'movie'] },
+        ]
+    }
+    _saveImgsToStorage()
+}
 
-function _createImg() {
+function _createImg(url, keywords = ['user-upload']) {
     return {
-        id: getId,
-        url,
+        id: _getNextId(),
+        url:url.src,
         keywords,
     }
+}
+
+function _saveImgsToStorage() {
+    saveToStorage(IMGS_KEY, gImgs)
 }
 
 

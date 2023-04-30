@@ -33,7 +33,7 @@
             <div class="gallery-tool-box flex align-center start">
                 <button class="flexible" onclick="onGetRandomMeme()">im flexible</button>
 
-                <!-- <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" /> -->
+                <input type="file" class="file-input btn" name="image" accept="image/jpeg, image/png, image/jpg" onchange="onImgInput(event)" />
                
                 <form class="filter-by-keyword" onsubmit="onSetFilterByKeyword(event)" >
                     <input list="keywords" name="keywords-input" class="keywords-input" placeholder="select keyword filter">
@@ -41,7 +41,7 @@
                     </datalist>
                     <button class="rst-filter" onclick="setFilterByKeyword('')" value="">reset filter</button>
                   </form>
-                  
+
                 <div class="keyword-container flex space-between align-center"></div>
             </div>
             <section class="main-gallery"></section>
@@ -73,23 +73,21 @@
                     </form>
 
                     <form class="line-size" onclick="onSetLineSize(event)">
-                        <button class="line-size-up" value="line-size-up">+</button>
-                        <button class="line-size-down" value="line-size-down">-</button>
+                        <button class="line-size-up icon" value="line-size-up">+</button>
+                        <button class="line-size-down icon" value="line-size-down">-</button>
                     </form>
 
                     <form class="line-size" onclick="onSetLineAlignment(event)">
-                        <button class="set-line-right" value="right">left</button>
-                        <button class="set-line-center" value="center">center</button>
-                        <button class="set-line-left" value="left">right</button>
+                        <button class="set-line-right icon" value="right">right</button>
+                        <button class="set-line-center icon" value="center">center</button>
+                        <button class="set-line-left icon" value="left">left</button>
                     </form>
                     <div class="save-meme " >
-                        <ul class="clean-list">
-                            <li><a href="#" onclick="downloadCanvas(this)" download="file-name" class=".clean-list" >download</a></li>
-                            <li><button class="btn" onclick="onUploadImg()">
+                            <a href="#" onclick="downloadCanvas(this)" download="file-name" class=".clean-list" >download</a>
+                            <button class="btn" onclick="onUploadImg()">
                                     Upload Image from Canvas
-                                </button></li>
-                                <li><button class="save-curr-meme" onclick="onSaveCurrMeme()">save</button></li>
-                        </ul>
+                                </button>
+                                <button class="save-curr-meme" onclick="onSaveCurrMeme()">save</button>
                     </div>
                 </div>
             </div>
@@ -102,7 +100,7 @@
 
         </section>
 
-        <section class="main-about-layout hidden">
+        <section class="main-about-layout  hidden">
             <div class="about-text">
                 
             </div>

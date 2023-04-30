@@ -5,18 +5,20 @@ let gCtx
 let gStartPos
 let gPressd = false
 let firstload = true
+let gFocus = true
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 function onInit() {
     gElCanvas = document.querySelector('.meme-canvas')
     gCtx = gElCanvas.getContext('2d')
-     resizeCanvas()
-    // renderMeme()
+    resizeCanvas()
     renderGallery()
     renderKeyWordCunt()
     renderKeywordFilter()
+    renderSavedMemes()
     addListeners()
     renderAboutTxt()
+
 }
 
 function onOpenGallery() {
@@ -66,12 +68,21 @@ function resizeCanvas() {
     gElCanvas.height = elContainer.offsetHeight
 }
 
+function renderUplodedMeme() {
+    const currMeme = getMeme()
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+    currMeme.lines.map((line, idx) => {
+        drawText(line, 200, 50, idx)
+        setLinePos({ x: 200, y: 50 }, idx)
+    })
+    firstload = false
+}
+
 function renderMeme() {
-    const elImg = new Image()
+    let elImg = new Image()
     const currMeme = getMeme()
     let lineHeight = 50
     elImg.src = currMeme.img.url
-    // console.log(currMeme)    
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         if (firstload) {
@@ -150,11 +161,10 @@ function onSelectCurrLine(ev) {
 }
 
 function setMarkLine(line) {
-
+    console.log(gPressd)
+    if (!gFocus) { gCtx.strokeStyle = 'rgba(' + [0, 0, 0, 0] + ')' }
     const { txt, pos, size } = line
     let txtSize = gCtx.measureText(txt)
-    // console.log(test)
-    // console.log(pos)
     gCtx.strokeRect(pos.x - txtSize.actualBoundingBoxLeft - 5, pos.y - size, txtSize.width + 5, size + 5)
 
 }
@@ -176,7 +186,7 @@ function onSetLineSize(ev) {
 
 function onSetLineSwitch() {
     setLineSwitch()
-    onSelectCurrLine()
+    renderMeme()
 }
 
 function onSetLineAlignment(ev) {
@@ -186,15 +196,25 @@ function onSetLineAlignment(ev) {
     renderMeme()
 }
 
+function onUploadImg(){
+    gFocus=false
+    renderMeme()
+    UploadImg()
+}
+
 function downloadCanvas(elLink) {
     const data = gElCanvas.toDataURL()
-
+    gFocus=false
+    renderMeme()
     elLink.href = data
     elLink.download = 'meme'
 }
 
 function onSaveCurrMeme() {
-    saveCurrMeme()
+    gFocus=false
+    renderMeme()
+    saveCurrMeme(gElCanvas.toDataURL('image/png'))
+    renderSavedMemes()
 }
 
 //////////========>>>> listeners
@@ -202,7 +222,7 @@ function addListeners() {
     addMouseListeners()
     addTouchListeners()
     // addTextListeners()
-    
+
 }
 
 function addTextListeners() {
@@ -231,14 +251,14 @@ function onDown(ev) {
         return pos.x >= line.pos.x - txtSize.actualBoundingBoxLeft - 5 && pos.x <= txtSize.width + 5
             && pos.y >= line.pos.y - line.size && pos.y <= line.pos.y + 5
     })
-    console.log(clickedLineIdx)
+    gFocus = false
     if (clickedLineIdx >= 0) {
         gStartPos = pos
         gPressd = true
+        gFocus = true
         setLineIdx(clickedLineIdx)
-        // console.log(getCurrLineIdx())
-        renderMeme()
     }
+    renderMeme()
 }
 
 function onMove(ev) {

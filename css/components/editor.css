@@ -1,14 +1,23 @@
-
-.editor-grid-container{
+.editor-grid-container {
     display: grid;
     gap: 30px 40px;
-    
- }
 
-.control-box{
-    flex-direction: column; 
+}
+
+.control-box {
+    flex-direction: column;
     margin-left: auto;
     margin-right: auto;
     gap: 10px;
 }
 
+.control-box .user-text {
+    border-radius: 1em;
+    font-size: larger;
+}
+
+/* .control-box button {
+    border: 0;
+    background: transparent;
+
+} */
